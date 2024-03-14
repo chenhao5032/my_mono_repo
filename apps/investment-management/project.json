@@ -2,7 +2,7 @@
   "name": "investment-management",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "my-mono-repo",
+  "prefix": "micky",
   "sourceRoot": "apps/investment-management/src",
   "tags": [],
   "targets": {

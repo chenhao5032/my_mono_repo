@@ -5,7 +5,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule],
-  selector: 'my-mono-repo-root',
+  selector: 'micky-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
