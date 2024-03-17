@@ -1,31 +1,34 @@
-name: CI/CD
- 
+name: CI
+
 on:
   push:
     branches:
-      - develop # 更换为你的默认开发分支
- 
+      - develop
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
 jobs:
-  build-and-deploy:
+  main:
     runs-on: ubuntu-latest
- 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
- 
-      - name: Install Dependencies
-        run: npm install
- 
-      - name: Build
-        run: npm build --prod
- 
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@v2.1.5
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avz --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USERNAME}}
-          REMOTE_PORT: ${{ secrets.SERVER_PORT }}  # 如果默认端口22不变可以省略
-          REMOTE_DIR: ${{ secrets.REMOTE_DIR }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Connect your workspace on nx.app and uncomment this to enable task distribution.
+      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
+      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="e2e-ci"
+
+      # Cache node_modules
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - uses: nrwl/nx-set-shas@v4
+
+      - run: npx nx-cloud record -- nx format:check
+      - run: npx nx affected -t lint test build e2e-ci
