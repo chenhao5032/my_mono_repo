@@ -20,9 +20,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm install
-      - run: npm run build
-      - run: tar -zcvf release.tgz package.json package-lock.json
-
+      
       
       - run: npm ci
       - uses: nrwl/nx-set-shas@v4
