@@ -9,20 +9,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      #下载源码
-      - name: Checkout
-        uses: actions/checkout@v4
+      # check out the repository
+      - name: Checkout    
+        uses: actions/checkout@v2    #这里使用了github官方提供的action,checkout项目到虚拟机上
 
-      #打包构建
+      - name: Install Dependencies
+        run: yarn
       - name: Build
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: 'npm'
-      - run: npm install
-      
-      
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v4
-
-      - run: npx nx affected -t lint test build e2e-ci
+        run: yarn build
