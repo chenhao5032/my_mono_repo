@@ -9,17 +9,17 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      #下载源码
       - name: Checkout repository
         uses: actions/checkout@v4
 
       #打包构建
       - name: Build
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
-
-       - name: Install dependencies
-        run: npm install
+          node-version: 18.12.1
+          cache: 'npm'
+      - run: npm install
       
       
       
