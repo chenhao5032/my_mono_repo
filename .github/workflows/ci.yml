@@ -1,25 +1,29 @@
-name: CICD
+name: Deploy Angular App
 
 on:
   push:
     branches:
-      - develop
+      - develop  # 触发分支可以根据你的需求修改
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-      #下载源码
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      #打包构建
-      - name: Build
-        uses: actions/setup-node@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18.12.1
-          cache: 'npm'
-      - run: npm install
-      
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+     
       
       
