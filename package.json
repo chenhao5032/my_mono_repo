@@ -2,7 +2,9 @@
   "name": "@my-mono-repo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "serve": "nx run investment-management:serve"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.1.0",

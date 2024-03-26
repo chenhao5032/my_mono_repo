@@ -12,6 +12,8 @@ jobs:
       #下载源码
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       #打包构建
       - name: Build
@@ -19,7 +21,14 @@ jobs:
         with:
           node-version: 20.11.1
       - run: npm install
-      - run: echo "Hello Github Action"
-      
-      
-      
+
+      - name: Deploy Over SSH
+        uses: easingthemes/ssh-deploy@v2.1.5
+        with:
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        env: 
+          name: hao
+      - run:
+          echo $name $REMOTE_HOST
