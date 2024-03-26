@@ -17,9 +17,9 @@ jobs:
       - name: Build
         uses: actions/setup-node@v4
         with:
-          node-version: 18.12.1
-          cache: 'npm'
+          node-version: 20.11.1
       - run: npm install
+      - run: echo "Hello Github Action"
       
       
       
