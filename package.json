@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "nx run investment-management:serve"
+    "serve": "nx run investment-management:serve",
+    "build": "nx run investment-management:build"
   },
   "private": true,
   "dependencies": {
