@@ -22,7 +22,7 @@ jobs:
           node-version: 20.11.1
       - run: npm install
 
-      #build
+      #部署
       - run: npm run build
 
       - name: Deploy Over SSH
