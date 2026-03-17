@@ -24,7 +24,8 @@
             "prefix": "my-mono-repo",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {
