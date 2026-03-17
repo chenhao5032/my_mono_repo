@@ -4,7 +4,10 @@
   "license": "MIT",
   "scripts": {
     "serve": "nx run investment-management:serve",
-    "build": "nx run investment-management:build"
+    "build": "nx run investment-management:build",
+    "build:dev": "nx run investment-management:build --configuration=development",
+    "serve:dist": "npx http-server dist/apps/investment-management/browser -p 8080 -c-1",
+    "preview": "npm run build:dev && npm run serve:dist"
   },
   "private": true,
   "dependencies": {
