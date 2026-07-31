@@ -45,9 +45,11 @@ export class DemoComponent implements OnInit {
 
 
 
+    currentDate = Date.now();
+
     getDate(){
         console.log('angular check')
-        return Date.now();
+        return this.currentDate;
     }
 
     onClick(){

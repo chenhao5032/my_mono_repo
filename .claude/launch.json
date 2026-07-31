@@ -2,9 +2,28 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "investment-management",
-      "url": "http://localhost:4200",
+      "name": "Angular Dev Server (development)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "investment-management:serve"],
       "port": 4200
+    },
+    {
+      "name": "Angular Dev Server (production)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "investment-management:serve:production"],
+      "port": 4200
+    },
+    {
+      "name": "Angular SSR Dev Server",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "investment-management:serve-ssr"],
+      "port": 4200
+    },
+    {
+      "name": "Preview (build + static serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "dist/apps/investment-management/browser", "-p", "8080", "-c-1"],
+      "port": 8080
     }
   ]
 }
