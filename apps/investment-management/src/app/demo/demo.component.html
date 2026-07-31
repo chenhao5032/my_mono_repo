@@ -1,0 +1,6 @@
+<div>{{getDate()}}</div>
+<input type="button" value="确定" (click)="onClick()"/>
+@for(item of data | process; track item){
+    <span style="color: red;">{{item}}</span><br>
+}
+<div>{{vasa}}</div>
